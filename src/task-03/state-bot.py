@@ -6,7 +6,6 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import Message
-
 from dotenv import load_dotenv
 
 
@@ -23,7 +22,9 @@ async def command_start(message: Message, state: FSMContext) -> None:
 async def process_name(message: Message, state: FSMContext) -> None:
     data = await state.update_data(name=message.text)
     await state.set_state(UserInfo.favorite_language)
-    await message.answer(f"{data["name"]}, какой у тебя любимый язык программирования?")
+
+    name = data["name"]
+    await message.answer(f"{name}, какой у тебя любимый язык программирования?")
 
 
 async def process_language(message: Message, state: FSMContext) -> None:
@@ -55,5 +56,5 @@ async def main() -> None:
     await dp.start_polling(bot)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())

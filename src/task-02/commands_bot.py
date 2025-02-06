@@ -12,7 +12,7 @@ async def echo(message: Message) -> None:
 
 
 async def my_command(message: Message) -> None:
-    await message.answer('my command handler')
+    await message.answer("my command handler")
 
 
 async def main() -> None:
@@ -27,5 +27,5 @@ async def main() -> None:
     await dp.start_polling(bot)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())

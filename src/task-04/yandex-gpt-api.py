@@ -2,7 +2,6 @@ import os
 import time
 
 import requests
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -38,8 +37,7 @@ while True:
     done = response.json()["done"]
     if done:
         break
-    else:
-        time.sleep(1)
+    time.sleep(2)
 
 data = response.json()
 answer = data['response']['alternatives'][0]['message']['text']
