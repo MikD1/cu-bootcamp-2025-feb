@@ -1,13 +1,12 @@
 import os
 import time
+from base64 import b64decode
+from datetime import datetime
 from io import BytesIO
 
 import requests
-from datetime import datetime
-from base64 import b64decode
-from PIL import Image
-
 from dotenv import load_dotenv
+from PIL import Image
 
 load_dotenv()
 folder_id = os.getenv("YANDEX_FOLDER_ID")
@@ -37,8 +36,7 @@ while True:
     done = response.json()["done"]
     if done:
         break
-    else:
-        time.sleep(2)
+    time.sleep(2)
 
 image_data = response.json()["response"]["image"]
 image_bytes = b64decode(image_data)
